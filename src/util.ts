@@ -5,7 +5,7 @@ import { tmpdir } from 'os';
 import { Canvas, loadImage, type Image } from 'skia-canvas';
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore
-import gifFrames from 'gif-frames';
+import gifFrame from 'gif-frame';
 // eslint-disable-next-line import/no-named-default
 import { default as ProgressBar } from 'progress';
 
@@ -18,7 +18,7 @@ export async function generateGIF(
 ): Promise<Buffer> {
   const filename = `${tmpdir()}/${Math.random().toString()}_n.png`;
   await writeFile(filename, buffer);
-  const gif = await gifFrames({ url, frames: 'all', outputType: 'png' });
+  const gif = await gifFrame({ url, frames: 'all', outputType: 'png' });
 
   console.log('Extracting frames...');
   const images = await Promise.all(
